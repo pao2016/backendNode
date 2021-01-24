@@ -47,7 +47,8 @@ var create = function (req, res) {
     var username = req.body.username;
     var name = req.body.name;
     var email = req.body.email;
-    var query = "INSERT INTO usuarios (username, name , email) VALUES ( '" + username + "', '" + name + "', '" + email + "') ";
+    var password = req.body.password;
+    var query = "INSERT INTO usuarios (username, name , email, password) VALUES ( '" + username + "', '" + name + "', '" + email + "', '" + password + "') ";
     mysql_1.default.ejecutarMutacion(query, function (err, result) {
         if (err) {
             res.status(400).json({

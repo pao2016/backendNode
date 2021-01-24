@@ -58,8 +58,9 @@ export let create = (req: Request, res: Response) => {
 var username = req.body.username;
 var  name = req.body.name;
 var email = req.body.email;
+var password = req.body.password;
  
- const query = `INSERT INTO usuarios (username, name , email) VALUES ( '${username}', '${name}', '${email}') `;
+ const query = `INSERT INTO usuarios (username, name , email, password) VALUES ( '${username}', '${name}', '${email}', '${password}') `;
 
  MySQL.ejecutarMutacion(query, (err: any, result: any) => {
 
