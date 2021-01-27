@@ -7,8 +7,8 @@ var MySQL = /** @class */ (function () {
         console.log('clase inicializada');
         this.cnn = mysql.createConnection({
             host: 'localhost',
-            user: 'node_user',
-            password: '123456',
+            user: 'db_prueb',
+            password: '123',
             database: 'test'
         });
         this.conectarDB();

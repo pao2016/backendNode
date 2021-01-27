@@ -12,7 +12,9 @@ router.use(bodyParser.urlencoded({ extended: true }))
 router.get('/users', homeController.users);
 router.get('/users/:id', homeController.user);
 router.post('/user/create', homeController.create);
-
+router.post('/estante/create', homeController.createEstante);
+router.get('/estantes', homeController.listEstantes);
+router.get('/estante/:id', homeController.estanteById);
 
 
 export default router;
