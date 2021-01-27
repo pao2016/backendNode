@@ -137,8 +137,6 @@ export let createEstante = (req: Request, res: Response) => {
     
         });
     
-
-    
     }; 
 
 
@@ -170,3 +168,79 @@ export let createEstante = (req: Request, res: Response) => {
     };
     
 
+    export let listProductos = (req: Request, res: Response) => {
+
+        const query = ` 
+        SELECT *
+        FROM  producto`;
+        MySQL.ejecutarQuery(query, (err: any, productos: Object[]) => {
+    
+            if (err) {
+                res.status(400).json({
+                    ok: false,
+                    error: err
+    
+                });
+            } else {
+                res.json({
+                    ok: true,
+                    productos
+                });
+            }
+    
+        });
+    
+    }; 
+
+
+    export let createEstanteProducto = (req: Request, res: Response) => {
+        var idEstante = req.body.idEstante;
+        var idProducto = req.body.idProducto;
+        var posicion = req.body.posicion;
+       
+    
+        const query = `INSERT INTO estenteproducto(idEstante, idProducto, posicion) VALUES ('${idEstante}', '${idProducto}', '${posicion}') `;
+    
+        MySQL.ejecutarMutacion(query, (err: any, result: any) => {
+    
+            if (err) {
+                res.status(400).json({
+                    ok: false,
+                    error: err,
+    
+                });
+            } else {
+                res.json({
+                    ok: true,
+                    result
+                });
+            }
+    
+        });
+    
+    }
+    
+
+    export let listEstanteProducto = (req: Request, res: Response) => {
+
+        const query = ` 
+        SELECT *
+        FROM  estenteproducto`;
+        MySQL.ejecutarQuery(query, (err: any, estenteproducto: Object[]) => {
+    
+            if (err) {
+                res.status(400).json({
+                    ok: false,
+                    error: err
+    
+                });
+            } else {
+                res.json({
+                    ok: true,
+                    estenteproducto
+                });
+            }
+    
+        });
+    
+    }; 

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.estanteById = exports.listEstantes = exports.createEstante = exports.create = exports.user = exports.users = void 0;
+exports.listEstanteProducto = exports.createEstanteProducto = exports.listProductos = exports.estanteById = exports.listEstantes = exports.createEstante = exports.create = exports.user = exports.users = void 0;
 var mysql_1 = __importDefault(require("../../mysql/mysql"));
 var users = function (req, res) {
     var query = " \n    SELECT *\n    FROM  usuarios";
@@ -125,3 +125,60 @@ var estanteById = function (req, res) {
     });
 };
 exports.estanteById = estanteById;
+var listProductos = function (req, res) {
+    var query = " \n        SELECT *\n        FROM  producto";
+    mysql_1.default.ejecutarQuery(query, function (err, productos) {
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                error: err
+            });
+        }
+        else {
+            res.json({
+                ok: true,
+                productos: productos
+            });
+        }
+    });
+};
+exports.listProductos = listProductos;
+var createEstanteProducto = function (req, res) {
+    var idEstante = req.body.idEstante;
+    var idProducto = req.body.idProducto;
+    var posicion = req.body.posicion;
+    var query = "INSERT INTO estenteproducto(idEstante, idProducto, posicion) VALUES ('" + idEstante + "', '" + idProducto + "', '" + posicion + "') ";
+    mysql_1.default.ejecutarMutacion(query, function (err, result) {
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                error: err,
+            });
+        }
+        else {
+            res.json({
+                ok: true,
+                result: result
+            });
+        }
+    });
+};
+exports.createEstanteProducto = createEstanteProducto;
+var listEstanteProducto = function (req, res) {
+    var query = " \n        SELECT *\n        FROM  estenteproducto";
+    mysql_1.default.ejecutarQuery(query, function (err, estenteproducto) {
+        if (err) {
+            res.status(400).json({
+                ok: false,
+                error: err
+            });
+        }
+        else {
+            res.json({
+                ok: true,
+                estenteproducto: estenteproducto
+            });
+        }
+    });
+};
+exports.listEstanteProducto = listEstanteProducto;

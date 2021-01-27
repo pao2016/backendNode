@@ -37,4 +37,7 @@ router.post('/user/create', homeController.create);
 router.post('/estante/create', homeController.createEstante);
 router.get('/estantes', homeController.listEstantes);
 router.get('/estante/:id', homeController.estanteById);
+router.get('/productos', homeController.listProductos);
+router.post('/estanteProducto/create', homeController.createEstanteProducto);
+router.get('/estanteProducto', homeController.listEstanteProducto);
 exports.default = router;
