@@ -147,7 +147,7 @@ var createEstanteProducto = function (req, res) {
     var idEstante = req.body.idEstante;
     var idProducto = req.body.idProducto;
     var posicion = req.body.posicion;
-    var query = "INSERT INTO estenteproducto(idEstante, idProducto, posicion) VALUES ('" + idEstante + "', '" + idProducto + "', '" + posicion + "') ";
+    var query = "INSERT INTO estenteproducto(idEstante, idProducto, posicion) VALUES (" + idEstante + ", " + idProducto + ", '" + posicion + "') ";
     mysql_1.default.ejecutarMutacion(query, function (err, result) {
         if (err) {
             res.status(400).json({

@@ -199,7 +199,7 @@ export let createEstante = (req: Request, res: Response) => {
         var posicion = req.body.posicion;
        
     
-        const query = `INSERT INTO estenteproducto(idEstante, idProducto, posicion) VALUES ('${idEstante}', '${idProducto}', '${posicion}') `;
+        const query = `INSERT INTO estenteproducto(idEstante, idProducto, posicion) VALUES (${idEstante}, ${idProducto}, '${posicion}') `;
     
         MySQL.ejecutarMutacion(query, (err: any, result: any) => {
     
